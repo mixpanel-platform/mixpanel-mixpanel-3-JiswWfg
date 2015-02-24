@@ -13,6 +13,18 @@
     <div id="graph" style="margin-bottom: 10px;"></div>
     <div id="table"></div>
     <script>
+    System.config({
+          baseURL: 'http://ilya.dev.mixpanel.org/libs/mixpanel-platform/js',
+          paths: {
+              'vendor/*': '/libs/mixpanel-platform/vendor/*.js',
+          },
+          map: {
+             'jquery': 'vendor/jquery/jquery',
+             'underscore': 'vendor/underscore/underscore',
+             'moment': 'vendor/moment/moment'
+          }
+      });
+      
        System.import('mixpanel-platform').then(function (MP) {
         $(document).ready(function() {
           MP.api.initialize('f0aa346688cee071cd85d857285a3464', '249fc2b7bca76856d10c13d950e14d67');
