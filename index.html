@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
-    <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ilya.dev.mixpanel.org/libs/mixpanel-platform/build/mixpanel-platform.min.css">
+    <script src="http://ilya.dev.mixpanel.org/libs/mixpanel-platform/vendor/systemjs/system.js"></script>
   </head>
   <body>
     <div id="eventSelect" style="float: left;"></div>
@@ -13,7 +13,9 @@
     <div id="graph" style="margin-bottom: 10px;"></div>
     <div id="table"></div>
     <script>
-      MP.api.ready(function() {
+       System.import('mixpanel-platform').then(function (MP) {
+        $(document).ready(function() {
+          MP.api.initialize('f0aa346688cee071cd85d857285a3464', '249fc2b7bca76856d10c13d950e14d67');
         var eventSelect = $('#eventSelect').MPEventSelect();
         var propSelect  = $('#propSelect').MPPropertySelect();
         var dateSelect  = $('#dateSelect').MPDatepicker();
@@ -40,6 +42,7 @@
         propSelect.on('change', runQuery);
         dateSelect.on('change', runQuery);
       });
+       });
     </script>
   </body>
 </html>
